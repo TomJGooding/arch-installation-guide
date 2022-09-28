@@ -90,3 +90,28 @@ Format the ROOT partition with the btrfs filesystem
 ```sh
 mkfs.btrfs -L ROOT /dev/root_partition
 ```
+
+## Mount the Partitions
+
+Show the partitions
+```sh
+lsblk
+```
+
+Mount the root volume
+```sh
+mount /dev/root_partition /mnt
+```
+
+Change into mnt directory
+```sh
+cd /mnt
+```
+
+Btrfs subvolumes layout
+|     Name     |       Subvolume       |
+|:------------:|:---------------------:|
+| "@.snapshots |      /.snapshots      |
+|     @home    |         /home         |
+|     @log     |        /var/log       |
+|     @pkgs    | /var/cache/pacman/pkg |
