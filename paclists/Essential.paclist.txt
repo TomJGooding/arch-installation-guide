@@ -1,0 +1,8 @@
+base
+linux
+linux-firmware
+base-devel
+vim
+git
+reflector
+btrfs-progs
