@@ -74,3 +74,19 @@ Print the partition table to ensure configured correctly with `p`
 
 Write the changes to the disk with `w`
 
+Show the partitions
+```sh
+lsblk
+```
+
+## Format the Partitions
+
+Format the BOOT (EFI) partition
+```sh
+mkfs.vfat -n BOOT /dev/boot_partition
+```
+
+Format the ROOT partition with the btrfs filesystem
+```sh
+mkfs.btrfs -L ROOT /dev/root_partition
+```
