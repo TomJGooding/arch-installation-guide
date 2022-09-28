@@ -42,8 +42,35 @@ Update the system clock
 timedatectl set-ntp true
 ```
 
-Identify the target disk for installation
+## Partition the Disk
+
+Identify the target disk
 ```sh
 lsblk
 ```
+
+Use gdisk to modify partition tables
+```sh
+gdisk /dev/the_disk_to_be_partitioned
+```
+
+Final layout
+| No |    Size   | Type Code | Name |
+|:--:|:---------:|:---------:|:----:|
+|  1 |   +512M   |    ef00   | BOOT |
+|  2 | remainder |  default  | ROOT |
+
+For each partition
+- Command: `n`
+- Partition number (default): `<enter>`
+- First sector (default): `<enter>`
+- Last sector: *size*
+- Code: *type_code*
+- Command: `c`
+- Partition number: *no*
+- Enter name: *name*
+
+Print the partition table to ensure configured correctly with `p`
+
+Write the changes to the disk with `w`
 
