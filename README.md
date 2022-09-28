@@ -1,6 +1,6 @@
 # Arch Installation Guide
 
-Notes for installing Arch Linux
+Personal reference guide for installing Arch Linux. Disclaimer: YMMV!
 
 ## Features
 
