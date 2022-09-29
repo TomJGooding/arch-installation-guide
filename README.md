@@ -243,3 +243,29 @@ Set the root password
 passwd
 ```
 
+## Install base packages
+
+Select the mirrors
+```sh
+reflector --country United Kingdom --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+Enable parallel downloads by uncommenting the ParallelDownloads line in the configuration file
+```sh
+vim /etc/pacman.conf
+```
+
+Sync the pacman repository
+```sh
+pacman -Syy
+```
+
+Download the list of base packages file
+```sh
+curl -O https://raw.githubusercontent.com/TomJGooding/arch-installation-guide/main/paclists/Base.paclist.txt
+```
+
+Install the packages
+```sh
+pacman -S --needed - < Base.paclist.txt
+```
