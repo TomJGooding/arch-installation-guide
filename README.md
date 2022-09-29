@@ -160,7 +160,7 @@ Check the partitons are mounted correctly
 lsblk
 ```
 
-# Installation
+## Installation
 
 Select the mirrors
 ```sh
@@ -181,3 +181,65 @@ Install the essential packages listed in the `Essential.paclist.txt` file
 ```sh
 pacstrap /mnt base linux linux-firmware other_essential_packages
 ```
+
+## Configure the system
+
+Generate an fstab file
+```sh
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+Change root into the new system
+```sh
+arch-chroot /mnt
+```
+
+Set the time zone
+```sh
+ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+```
+
+Synchronise the hardware clock to the system clock
+```sh
+hwclock --systohc
+```
+
+Edit /etc/locale.gen and uncomment the needed locales - en_GB.UTF-8 UTF-8
+```sh
+vim /etc/locale.gen
+```
+Generate the locales
+```sh
+locale-gen
+```
+
+Create the locale.conf file and set the LANG variable
+```sh
+echo "LANG=en_GB.UTF-8" >> /etc/locale.conf
+```
+
+Set the console keymap permanently
+```sh
+echo "KEYMAP=uk" >> /etc/vconsole.conf
+```
+
+Create the hostname
+```sh
+echo "arch" >> /etc/hostname
+```
+
+Edit the hosts file
+```sh
+vim /etc/hosts
+```
+```
+127.0.0.1        localhost
+::1              localhost
+127.0.1.1        arch.localdomain        arch
+```
+
+Set the root password
+```sh
+passwd
+```
+
