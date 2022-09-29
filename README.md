@@ -151,7 +151,6 @@ mount -o compress=zstd:1,noatime,subvol=@pkgs /dev/root_partition /mnt/var/cache
 ```
 
 Mount the EFI boot partition
-
 ```sh
 mount /dev/boot_partition /mnt/boot/efi
 ```
@@ -159,4 +158,26 @@ mount /dev/boot_partition /mnt/boot/efi
 Check the partitons are mounted correctly
 ```sh
 lsblk
+```
+
+# Installation
+
+Select the mirrors
+```sh
+reflector --country United Kingdom --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+Enable parallel downloads by uncommenting the ParallelDownloads line in the configuration file
+```sh
+vim /etc/pacman.conf
+```
+
+Sync the pacman repository
+```sh
+pacman -Syy
+```
+
+Install the essential packages listed in the `Essential.paclist.txt` file
+```sh
+pacstrap /mnt base linux linux-firmware other_essential_packages
 ```
