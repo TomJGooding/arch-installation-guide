@@ -1,0 +1,10 @@
+grub
+efibootmgr
+networkmanager
+network-manager-applet
+wpa_supplicant
+mtools
+dosfstools
+xdg-utils
+xdg-user-dirs
+alsa-utils
