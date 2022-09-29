@@ -269,3 +269,15 @@ Install the packages
 ```sh
 pacman -S --needed - < Base.paclist.txt
 ```
+
+## Install and configure GRUB
+
+Install GRUB
+```sh
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinux
+```
+
+Create the GRUB configuration file
+```sh
+grub-mkconfig -o /boot/grub/grub.cfg 
+```
