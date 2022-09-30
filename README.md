@@ -295,4 +295,19 @@ Create the GRUB configuration file
 grub-mkconfig -o /boot/grub/grub.cfg 
 ```
 
+## Add users and groups
 
+Add a new user
+```sh
+useradd -m -G sys,network,lp,wheel tom
+```
+
+Set the password
+```sh
+passwd tom
+```
+
+Enable the wheel group for sudo, by uncommenting the `%wheel ALL= (ALL) ALL` line in sudoers
+```sh
+EDITOR=vim visudo 
+```
