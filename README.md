@@ -270,7 +270,7 @@ Install the packages
 pacman -S --needed - < Base.paclist.txt
 ```
 
-## Install and configure GRUB
+## Install GRUB
 
 Install GRUB
 ```sh
@@ -280,4 +280,19 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchL
 Create the GRUB configuration file
 ```sh
 grub-mkconfig -o /boot/grub/grub.cfg 
+```
+
+## Configure mkinitcpio
+
+Edit the configuration file for mkinitcpio
+```sh
+vim /etc/mkinitcpio.conf
+```
+```
+BINARIES=(btrfs)
+```
+
+Regenerate
+```sh
+mkinitcpio -p linux
 ```
