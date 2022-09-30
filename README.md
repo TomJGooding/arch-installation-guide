@@ -334,3 +334,19 @@ systemctl enable fstrim.timer
 systemctl enable NetworkManager
 ```
 
+## Reboot
+
+Exit the chroot environment
+```sh
+exit
+```
+
+Unmount all the partitions
+```sh
+umount -R /mnt
+```
+
+Restart the machine. Remember to remove the USB!
+```sh
+reboot
+```
