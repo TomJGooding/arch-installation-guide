@@ -243,6 +243,19 @@ Set the root password
 passwd
 ```
 
+Edit the configuration file for mkinitcpio
+```sh
+vim /etc/mkinitcpio.conf
+```
+```
+BINARIES=(btrfs)
+```
+
+Regenerate
+```sh
+mkinitcpio -p linux
+```
+
 ## Install base packages
 
 Select the mirrors
@@ -282,17 +295,4 @@ Create the GRUB configuration file
 grub-mkconfig -o /boot/grub/grub.cfg 
 ```
 
-## Configure mkinitcpio
 
-Edit the configuration file for mkinitcpio
-```sh
-vim /etc/mkinitcpio.conf
-```
-```
-BINARIES=(btrfs)
-```
-
-Regenerate
-```sh
-mkinitcpio -p linux
-```
