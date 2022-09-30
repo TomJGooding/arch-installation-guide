@@ -311,3 +311,26 @@ Enable the wheel group for sudo, by uncommenting the `%wheel ALL= (ALL) ALL` lin
 ```sh
 EDITOR=vim visudo 
 ```
+
+## Enable services
+
+```sh
+systemctl enable avahi-daemon
+```
+
+```sh
+systemctl enable bluetooth
+```
+
+```sh
+systemctl enable cups
+```
+
+```sh
+systemctl enable fstrim.timer
+```
+
+```sh
+systemctl enable NetworkManager
+```
+
