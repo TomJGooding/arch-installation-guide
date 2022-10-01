@@ -428,3 +428,22 @@ Check system now has swap with zram
 ```sh
 lsblk
 ```
+
+## Reboot and Initial Configuration
+
+Reboot the system
+```sh
+reboot
+```
+
+If everything went well, after rebooting we should be greeted with the lightdm display manager.
+
+After logging in, we will be prompted by i3 to create a configuration file. Hit enter.
+
+Select the windows key as the modifier and hit enter.
+
+Hit mod+Enter to open the terminal. Change the keyboard layout
+```sh
+setxkbmap gb
+```
+
