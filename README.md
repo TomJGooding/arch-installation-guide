@@ -350,3 +350,38 @@ Restart the machine. Remember to remove the USB!
 ```sh
 reboot
 ```
+
+## Post-Installation
+
+Ensure a valid IP address
+```sh
+ip -c a
+```
+
+Check you can synchronise packages
+```sh
+sudo pacman -Sy
+```
+
+Download the list of post-install packages file
+```sh
+curl -O https://raw.githubusercontent.com/TomJGooding/arch-installation-guide/main/paclists/PostInstall.paclist.txt
+```
+
+Install the packages
+```sh
+sudo pacman -S --needed - < PostInstall.paclist.txt
+```
+
+Enable the display manager
+```sh
+sudo systemctl enable lightdm
+```
+
+Edit lightdm config to use slick-greeter
+```sh
+sudo vim /etc/lightdm/lightdm.conf
+```
+```
+greeter-session=light-dm-slick-greeter
+```
