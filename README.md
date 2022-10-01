@@ -164,7 +164,7 @@ lsblk
 
 Select the mirrors
 ```sh
-reflector --country United Kingdom --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --country "United Kingdom" --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 Enable parallel downloads by uncommenting the ParallelDownloads line in the configuration file
@@ -260,7 +260,7 @@ mkinitcpio -p linux
 
 Select the mirrors
 ```sh
-reflector --country United Kingdom --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+reflector --country "United Kingdom" --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
 Enable parallel downloads by uncommenting the ParallelDownloads line in the configuration file
