@@ -8,10 +8,10 @@ nitrogen
 archlinux-wallpaper
 urxvt-perls
 picom
+grub-btrfs
 firefox
 git
 htop
 neofetch
 ranger
-nvim
 gimp
