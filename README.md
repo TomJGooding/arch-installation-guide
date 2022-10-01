@@ -415,3 +415,16 @@ Install the packages
 ```sh
 paru -S - < AUR.paclist.txt
 ```
+
+## Activate Zram
+
+Enable zramd
+
+```sh
+sudo systemctl enable --now zramd
+```
+
+Check system now has swap with zram
+```sh
+lsblk
+```
