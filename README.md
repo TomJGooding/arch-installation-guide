@@ -383,7 +383,7 @@ Edit lightdm config to use slick-greeter
 sudo vim /etc/lightdm/lightdm.conf
 ```
 ```
-greeter-session=light-dm-slick-greeter
+greeter-session=lightdm-slick-greeter
 ```
 
 ## Install AUR packages
