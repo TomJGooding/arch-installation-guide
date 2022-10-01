@@ -385,3 +385,21 @@ sudo vim /etc/lightdm/lightdm.conf
 ```
 greeter-session=light-dm-slick-greeter
 ```
+
+## Install Paru AUR helper
+
+```sh
+git clone https://aur.archlinux.org/paru
+cd paru
+makepkg -si
+```
+
+Verify paru is working
+```sh
+paru
+```
+
+Remove build directory
+```sh
+rm -fr paru
+```
