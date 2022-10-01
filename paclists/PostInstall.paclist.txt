@@ -1,0 +1,17 @@
+xorg
+lightdm
+lightdm-slick-greeter
+i3
+dmenu
+ixappearance
+nitrogen
+archlinux-wallpaper
+urxvt-perls
+picom
+firefox
+git
+htop
+neofetch
+ranger
+nvim
+gimp
