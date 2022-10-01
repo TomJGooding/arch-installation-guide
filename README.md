@@ -386,8 +386,9 @@ sudo vim /etc/lightdm/lightdm.conf
 greeter-session=light-dm-slick-greeter
 ```
 
-## Install Paru AUR helper
+## Install AUR packages
 
+Install the paru AUR helper
 ```sh
 git clone https://aur.archlinux.org/paru
 cd paru
@@ -401,5 +402,16 @@ paru
 
 Remove build directory
 ```sh
+cd
 rm -fr paru
+```
+
+Download the list of AUR packages file
+```sh
+curl -O https://raw.githubusercontent.com/TomJGooding/arch-installation-guide/main/paclists/AUR.paclist.txt
+```
+
+Install the packages
+```sh
+paru -S - < AUR.paclist.txt
 ```
