@@ -3,6 +3,9 @@ efibootmgr
 networkmanager
 network-manager-applet
 wpa_supplicant
+blueman
+bluez-utils
+cups
 mtools
 dosfstools
 xdg-utils
