@@ -3,7 +3,7 @@ lightdm
 lightdm-slick-greeter
 i3
 dmenu
-ixappearance
+lxappearance
 nitrogen
 archlinux-wallpaper
 urxvt-perls
