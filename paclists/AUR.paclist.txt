@@ -1,3 +1,4 @@
 zramd
 lightdm-settings
 snapper-support
+nerd-fonts-noto
