@@ -447,3 +447,15 @@ Hit mod+Enter to open the terminal. Change the keyboard layout
 setxkbmap gb
 ```
 
+The urxvt terminal is ugly out of the box, so we'll need to add an Xresources file
+```sh
+curl -O https://raw.githubusercontent.com/TomJGooding/arch-installation-guide/main/settings/.Xresources
+```
+
+Load the file
+```sh
+xrdb ~/.Xresources
+```
+
+Hit mod+Shift+q to close the current terminal, then open again with mod+Enter.
+We should now have a much nicer looking terminal!
