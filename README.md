@@ -459,3 +459,136 @@ xrdb ~/.Xresources
 
 Hit mod+Shift+q to close the current terminal, then open again with mod+Enter.
 We should now have a much nicer looking terminal!
+
+## Configure Snapper
+
+Become root shell and change to the root directory
+```sh
+sudo -s
+cd /
+```
+
+Snapper will re-create the snapshots subvolume when configured, so we need to remove this first
+```sh
+umount /.snapshots
+rm -r /.snapshots
+```
+
+Create the snapper root configuration
+```sh
+snapper -c root create-config /
+```
+
+Listing the btrfs subvolumes will show that snapper has created an extra superflous snapshots subvolume
+```sh
+btrfs subvol lis /
+```
+
+Remove the extra superflous subvolume
+```sh
+btrfs subvol del /.snapshots
+```
+
+Listing again should show this has now been deleted
+```sh
+btrfs subvol lis /
+```
+
+Now we need to re-create this directory and re-mount
+```sh
+mkdir .snapshots
+mount -a
+```
+
+Check that all subvolumes are properly mounted again
+```sh
+lsblk
+```
+
+We want bootable snapshots, but currently the default is the the top level file system tree
+```sh
+btrfs subvol get-def /
+```
+
+Change the default to the @ root subvolume ID
+```sh
+btrfs subvol get-def /
+btrfs subvol set-def ID_of_@_subvolume /
+```
+
+Verify the changes
+```sh
+btrfs subvol get-def /
+```
+
+Edit the config file
+```sh
+vim /etc/snapper/configs/root
+```
+```
+ALLOW_GROUPS="wheel"
+[...]
+NUMBER_LIMIT="10"
+[...]
+TIMELINE_MIN_AGE="1800"
+TIMELINE_LIMIT_HOURLY="5"
+TIMELINE_LIMIT_DAILY="7"
+TIMELINE_LIMIT_WEEKLY="0"
+TIMELINE_LIMIT_MONTHLY="0"
+TIMELINE_LIMIT_YEARLY="0"
+```
+
+Change the owner of the snapshots subvolume for the wheel group
+```sh
+chown -R :wheel /.snapshots
+```
+
+Exit the root shell and ensure we can use snapper as a wheel user
+```sh
+exit
+snapper ls
+```
+
+Become root shell again and change to the root directory
+```sh
+sudo -s
+cd /
+```
+
+Enable the grub-btrfs service
+```sh
+systemctl enable --now grub-btrfs.path
+```
+
+Verify that the service is monitoring for new snapshots
+```sh
+systemctl status grub-btrfs.path
+```
+
+Create a grub configuration file to ensure everything is synchronised
+```sh
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+Enable the snapper services
+```sh
+systemctl enable --now snapper-timeline.timer
+systemctl enable --now snapper-cleanup.timer
+```
+
+Create our first snapshot for the base system configuration
+```sh
+snapper -c root create -d "***Base System Configuration***"
+snapper ls
+```
+
+Synchronise the grub menu
+```sh
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+Exit the root shell and verify that as a wheel user the new snapshot is listed
+```sh
+exit
+snapper ls
+```
