@@ -45,7 +45,7 @@ Xft.lcdfilter: lcddefault
 *color7:       #abb2bf
 *color15:      #c8ccd4
 
-URxvt.font:                       9x15,xft:NotoSansMono Nerd Font
+URxvt.font:                       xft:NotoSansMono Nerd Font
 
 URxvt.depth:                      32
 URxvt.background:                 [100]#282c34
