@@ -611,4 +611,7 @@ sudo pacman -S chezmoi
 chezmoi init
 ```
 
-
+Create a new repository on GitHub called dotfiles. Choose No for the option to clone locally.
+```sh
+gh repo create
+```
