@@ -597,7 +597,13 @@ snapper ls
 
 We will use chezmoi to help manage our configuration files (dotfiles)
 
-First install the Github CLI and authenticate your account
+First configure your GitHub username and email address
+```sh
+git config --global user.name "Your Name"
+git config --global user.email you@example.com
+```
+
+Install the Github CLI and authenticate your account
 ```sh
 sudo pacman -S github-cli
 
@@ -611,7 +617,35 @@ sudo pacman -S chezmoi
 chezmoi init
 ```
 
-Create a new repository on GitHub called dotfiles. Choose No for the option to clone locally.
+Create a new repository on GitHub called dotfiles. Choose 'No' for all options to add files and the option to clone locally.
 ```sh
 gh repo create
+```
+
+Manage our first file with chezmoi
+```sh
+chezmoi add ~/.Xresources
+```
+
+Make some changes and save the file. See what changes chezmoi would make.
+```sh
+export EDITOR=vim
+chezmoi edit ~/.Xresources
+chezmoi diff
+```
+
+Apply the changes. Then open a shell in the source directory, to commit your changes
+```sh
+chezmoi -v apply
+chezmoi cd
+git add .
+git commit -m "Initial commit"
+```
+
+Push your repo, then finally exit the shell in the source directory
+```sh
+git remote add origin https://github.com/username/dotfiles.git
+git branch -M main
+git push -u origin main
+exit
 ```
