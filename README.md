@@ -512,7 +512,7 @@ btrfs subvol get-def /
 
 Change the default to the @ root subvolume ID
 ```sh
-btrfs subvol get-def /
+btrfs subvol lis /
 btrfs subvol set-def ID_of_@_subvolume /
 ```
 
@@ -592,3 +592,23 @@ Exit the root shell and verify that as a wheel user the new snapshot is listed
 exit
 snapper ls
 ```
+
+## Managing dotfiles
+
+We will use chezmoi to help manage our configuration files (dotfiles)
+
+First install the Github CLI and authenticate your account
+```sh
+sudo pacman -S github-cli
+
+gh auth login
+```
+
+Install and initialise chezmoi
+```sh
+sudo pacman -S chezmoi
+
+chezmoi init
+```
+
+
