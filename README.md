@@ -649,3 +649,65 @@ git branch -M main
 git push -u origin main
 exit
 ```
+
+## Install Neovim
+
+Install neovim
+```sh
+sudo pacman -S neovim
+```
+
+Create and change into a new nvim config directory
+```sh
+mkdir .config/nvim
+cd .config/nvim
+```
+
+Download the kickstart configuration file
+```sh
+curl -O https://raw.githubusercontent.com/nvim-lua/kickstart.nvim/master/init.lua
+```
+
+Start neovim and install the plugins
+```
+nvim
+:PackerInstall
+```
+
+If we run `:checkhealth` neovim will show some errors for missing packages required by the configuration
+
+Quit neovim and install these packages
+```sh
+sudo pacman -S node npm wget unzip
+```
+
+Running `:checkhealth` again should no longer show these errors. We can also check installed language servers by running `:Mason`
+
+Add relative numbers to the nvim configuration and manage with chezmoi
+```sh
+chezmoi add ~/.config/nvim/init.lua
+export EDITOR=vim
+chezmoi edit ~/.config/nvim/init.lua
+```
+
+Add line for relative numbers
+```
+-- Make line numbers default
+vim.wo.number = true
+vim.wo.relativenumber = true
+```
+
+Apply the changes. Then open a shell in the source directory, to commit your changes
+```sh
+chezmoi -v apply
+chezmoi cd
+git add .
+git commit -m "Added nvim dotfile"
+```
+
+Push your repo, then finally exit the shell in the source directory
+```sh
+git push -u origin main
+exit
+```
+
