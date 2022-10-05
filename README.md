@@ -725,7 +725,7 @@ export BROWSER=/usr/bin/firefox
 
 ## i3 Configuration
 
-Add new options in the i3 configuration file, again ensuring to manage all dotfiles with chezmoi
+Add new options in the i3 configuration file, again ensuring to manage all dotfiles with chezmoi (i.e. `chezmoi add ~/.config/i3/config`, etc...)
 ```
 # Configure border style
 default_border pixel 1
