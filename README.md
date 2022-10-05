@@ -686,7 +686,7 @@ Running `:checkhealth` again should no longer show these errors. We can also che
 Add relative numbers to the nvim configuration and manage with chezmoi
 ```sh
 chezmoi add ~/.config/nvim/init.lua
-export EDITOR=vim
+export EDITOR=nvim
 chezmoi edit ~/.config/nvim/init.lua
 ```
 
@@ -711,3 +711,60 @@ git push -u origin main
 exit
 ```
 
+Create a new`~/.profile` file which will allow us to set neovim as the default editor 
+```sh
+cd
+touch .profile
+```
+
+Follow the same steps above for managing this dotfile with chezmoi. Add these lines:
+```
+export EDITOR=/usr/bin/nvim
+export BROWSER=/usr/bin/firefox
+```
+
+## i3 Configuration
+
+Add new options in the i3 configuration file, again ensuring to manage all dotfiles with chezmoi
+```
+# Configure border style
+default_border pixel 1
+default_floating_border normal
+
+# Hide borders
+hide_edge_borders none
+
+# Open specific applications in floating mode
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+
+# Switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# Autostart applications
+exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+
+#############################
+### Settings for i3-gaps: ###
+#############################
+
+# Set inner/outer gaps
+gaps inner 14
+gaps outer -2
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+smart_borders on
+```
+
+Close the window and restart i3. Verify windows now have gaps by opening a couple new terminals
+```sh
+mod+Shift+q
+mod+Shift+r
+mod+Enter
+mod+Enter
+```
