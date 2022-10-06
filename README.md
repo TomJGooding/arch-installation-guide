@@ -768,3 +768,21 @@ mod+Shift+r
 mod+Enter
 mod+Enter
 ```
+
+## Add Wallpaper with Nitrogen
+
+Open dmenu with `mod+d`. Type 'nitrogen' and press Enter to open.
+
+Click 'Preferences' and add the directory `/usr/share/backgrounds`. Ensure the Recurse option is ticked, then click OK.
+
+Choose a background and change the sizing option to 'Zoomed Fill'. This repo's settings directory also includes a retro Linux background if you prefer, just save to the backgrounds directory. Click 'Apply' and close Nitogen with `mod+Shift+q`
+
+We can also add transparency to the terminal by editing the `.Xresources` file (remember to manage with chezmoi)
+```
+URxvt.background: [95]#282c34
+```
+
+Merge the changes then close and open a new terminal which should now have transparency
+```sh
+xrdb -merge ~/.Xresources
+```
