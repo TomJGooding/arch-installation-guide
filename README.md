@@ -782,7 +782,22 @@ We can also add transparency to the terminal by editing the `.Xresources` file (
 URxvt.background: [95]#282c34
 ```
 
-Merge the changes then close and open a new terminal which should now have transparency
+Merge the changes
 ```sh
 xrdb -merge ~/.Xresources
 ```
+
+## picom Configuration
+
+First we need to copy the default picom configuration file to our `~/.config` directory
+```sh
+cp /etc/xdg/picom.conf .config/
+```
+
+Remember to manage all dotfiles with chezmoi and edit this file to disable fading
+```
+fading = false
+# fading = true
+```
+
+Exit i3 with `mod+Shift+e`. After logging back in, the termimal should now have transparency but no fading effect when opening/closing a window.
