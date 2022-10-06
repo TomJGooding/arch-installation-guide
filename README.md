@@ -801,3 +801,15 @@ fading = false
 ```
 
 Exit i3 with `mod+Shift+e`. After logging back in, the termimal should now have transparency but no fading effect when opening/closing a window.
+
+## Configure theme with Lxappearance
+
+Install the theme packages
+```sh
+sudo pacman -S arc-gtk-theme papirus-icon-theme
+```
+
+Open dmenu with `mod+d`. Type 'lxappearance' and press Enter to open.
+
+Change the 'Widget' theme to Arc-Dark and the 'Icon Theme' to Papirus-Dark
+
