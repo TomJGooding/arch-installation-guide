@@ -823,3 +823,54 @@ sudo lightdm-settings
 Choose a background. Change the GTK theme to Arc-Dark and the Icon theme to Papirus-Dark.
 
 Quit with `mod+Shift+q`, then exit i3 with `mod+Shift+e`. The display manager should now have a wallpaper.
+
+## Status bar configuration
+
+First we need to copy the default i3status configuration file to our `~/.config/i3` directory
+```sh
+cp /etc/i3status.conf .config/i3
+```
+
+Remember to manage all dotfiles with chezmoi and edit this file
+```
+# order += "ipv6"
+order += "cpu_usage"
+order += "disk /"
+order += "wireless _first_"
+# order += "ethernet _first_"
+order += "battery all"
+# order += "load"
+order += "memory"
+order += "tztime local"
+
+cpu_usage {
+        format = "CPU: %usage"
+}
+```
+
+By default i3 will look for the i3status config in the etc directory, so we need to edit the i3 config file
+```
+bar {
+        status_command i3status -c ~/.config/i3/i3status.conf
+}
+```
+
+We can also change the bar font and colours
+```
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font xft:NotoSansMono Nerd Font 10
+[...]
+bar {
+        status_command i3status -c ~/.config/i3/i3status.conf
+
+        colors {
+                background #282c34
+        }
+}
+```
+
+Reload i3 to verify the changes
+```sh
+mod+Shift+r
+```
