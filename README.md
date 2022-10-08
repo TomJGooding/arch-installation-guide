@@ -2,6 +2,34 @@
 
 Personal reference guide for installing Arch Linux. Disclaimer: YMMV!
 
+## Table of Contents
+
+- [Features](#features)
+- [Pre-Installation](#pre-installation)
+- [Partition the Disk](#partition-the-disk)
+- [Format the Partitions](#format-the-partitions)
+- [Mount the Partitions](#mount-the-partitions)
+- [Installation](#installation)
+- [Configure the system](#configure-the-system)
+- [Install base packages](#install-base-packages)
+- [Install GRUB](#install-grub)
+- [Add users and groups](#add-users-and-groups)
+- [Enable services](#enable-services)
+- [Reboot](#reboot)
+- [Post-Installation](#post-installation)
+- [Install AUR packages](#install-aur-packages)
+- [Activate Zram](#activate-zram)
+- [Reboot and Initial Configuration](#reboot-and-initial-configuration)
+- [Configure Snapper](#configure-snapper)
+- [Managing dotfiles](#managing-dotfiles)
+- [Install Neovim](#install-neovim)
+- [i3 Configuration](#i3-configuration)
+- [Add Wallpaper with Nitrogen](#add-wallpaper-with-i3)
+- [picom Configuration](#picon-configuration)
+- [Theme configuration with Lxappearance](#theme-configuration-with-lxappearance)
+- [Display manager configuration](#display-manager-configuration)
+- [Status bar configuration](#status-bar-configuration)
+
 ## Features
 
 - Btrfs
